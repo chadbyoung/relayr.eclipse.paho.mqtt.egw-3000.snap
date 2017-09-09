@@ -1,4 +1,4 @@
-# Paho.MQTT - Dell Edge Gateway - Relay
+# Paho.MQTT - Dell Edge Gateway - Relayr
 
 This will be an WIP where I try to create an eclipse.paho.mqtt snap that will
 read the ambient temperature inside of a Dell Edge Gateway 3001 using the 
