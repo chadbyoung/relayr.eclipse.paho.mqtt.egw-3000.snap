@@ -40,8 +40,8 @@ client.connect("iot.eclipse.org",1883,60)
 # manual interface.
 i=1
 while client.loop() == 0:
-	message = "Test publish "+ str(i)	
-	print("Sending on topic: "+str(topic)+" the message :"+str(message))	
+	message = "Test publish "+ str(i)
+	print("Sending on topic: "+str(topic)+" the message :"+str(message))
 	client.publish(topic, message)
 	i =i +1
 	time.sleep(10)# sleep for 10 seconds before next call
