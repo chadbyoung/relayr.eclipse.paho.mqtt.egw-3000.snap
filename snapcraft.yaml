@@ -13,6 +13,8 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 apps:
     publish:
         command: bin/mqttpublish
+    publish-cpu_temp:
+        command: publish/cpu_temp
 
 parts:
     mqtt:
@@ -23,3 +25,4 @@ parts:
         source: .
         organize:
             ./exec/mqttpublish.py: bin/mqttpublish
+            ./publish/cpu_temp.py: publish/cpu_temp
