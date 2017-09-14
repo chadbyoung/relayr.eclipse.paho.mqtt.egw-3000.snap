@@ -28,3 +28,4 @@ parts:
         organize:
             ./exec/mqttpublish.py: bin/mqttpublish
             ./exec/cputemp.py: bin/cputemp
+            ./exec/test.py: bin/test

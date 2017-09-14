@@ -15,6 +15,8 @@ with "pip install paho-mqtt>=1.1".
 import json
 import time
 
+import test
+
 import paho.mqtt.client as mqtt
 
 
@@ -28,19 +30,24 @@ creds = {
         'port':     1883
 }
 
-#function to read temperature of CPU
-def read_temperature():
-    with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
-        text = f.read().strip()
-        temp1 = float(text)
-        temp2 = float(temp1 / 1000)
-        return(temp2)
-        f.close()
+# function to read temperature of CPU
+
+
+# def read_temperature():
+#    with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
+#        text = f.read().strip()
+#        temp1 = float(text)
+#        temp2 = float(temp1 / 1000)
+#        return(temp2)
+#        f.close()
 
 # ATTENTION !!!
 # DO NOT try to set values under 200 ms of the server
 # will kick you out
+
+
 publishing_period = 1000
+
 
 class MqttDelegate(object):
     "A delegate class providing callbacks for an MQTT client."
@@ -59,6 +66,7 @@ class MqttDelegate(object):
 
     def on_publish(self, client, userdata, mid):
         print('Message published.')
+
 
 def main(credentials, publishing_period):
     client = mqtt.Client(client_id=credentials['clientId'])
@@ -84,7 +92,8 @@ def main(credentials, publishing_period):
 
     while True:
         client.loop()
-        sensor_value = read_temperature()
+#        sensor_value = read_temperature()
+        sensor_value = test.main
 
         # publish data
         message = {
@@ -94,6 +103,7 @@ def main(credentials, publishing_period):
         client.publish(credentials['topic'] +'data', json.dumps(message))
 
         time.sleep(publishing_period / 1000.)
+
 
 if __name__ == '__main__':
     main(creds, publishing_period)
