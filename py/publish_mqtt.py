@@ -7,7 +7,7 @@
 # so it receives the same messages previously posted.
 import json
 import time
-from test import readTemp
+from temperature import readTemp
 import paho.mqtt.client as mqtt
 
 print("Starting the MQTT publish script")
@@ -70,6 +70,7 @@ def main(credentials, publishing_period):
         client.loop()
 #       sensor_value = read_temperature()
         sensor_value = readTemp()
+        print(readTemp())
 
         # publish data
         message = {

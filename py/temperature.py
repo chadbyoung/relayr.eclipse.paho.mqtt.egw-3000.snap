@@ -6,6 +6,7 @@ FILE_RAW = "/sys/bus/iio/devices/iio:device0/in_temp_raw"
 FILE_OFFSET = "/sys/bus/iio/devices/iio:device0/in_temp_offset"
 FILE_SCALE = "/sys/bus/iio/devices/iio:device0/in_temp_scale"
 
+
 def readTemp():
 
     # Read the "in_temp_raw" file
@@ -38,6 +39,5 @@ def readTemp():
     # Multiply the numbers
     total2 = phase2(total1, InTempScale)
 
-#    print("test.py")
-    print(format(total2, ',.2f'))
+#    print(format(total2, ',.2f'))
     return(format(total2, ',.2f'))
