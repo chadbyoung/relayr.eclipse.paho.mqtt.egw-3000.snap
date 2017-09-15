@@ -1,0 +1,31 @@
+# Author Thibaut Rouffineau <thibaut.rouffineau@canonical.com>
+# Updated by Chad Young <chad.young@dell.com>
+
+name: mqttrelayr
+version: 0.01
+summary: MQTT client that posts to the Relayr cloud
+description: This app is a small client using Eclipse Foundation MQTT client |
+    to publish temperature from a Dell Edge Gateway 3001 to the Relayr Cloud.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+    publish:
+        command: bin/mqttpublish
+    publish-cputemp:
+        command: bin/cputemp
+    publish-pythoncputemp:
+        command: "/usr/bin/python3 $SNAP/bin/cputemp"
+
+parts:
+    mqtt:
+        plugin: python
+        source: https://github.com/eclipse/paho.mqtt.python.git
+    files:
+        plugin: dump
+        source: .
+        organize:
+            ./exec/mqttpublish.py: bin/mqttpublish
+            ./exec/cputemp.py: bin/cputemp
+            ./exec/test.py: bin/test
