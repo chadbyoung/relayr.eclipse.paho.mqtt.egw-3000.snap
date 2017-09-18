@@ -13,8 +13,8 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 apps:
     publish:
         command: bin/publish_mqtt.py
-    locate:
-        command: bin/where_folder.py
+    singletemper:
+        command: bin/singleTemper.py
 
 parts:
     mqtt:
@@ -25,6 +25,8 @@ parts:
         source: .
         organize:
             ./py/publish_mqtt.py : bin/publish_mqtt.py
-            ./py/temperature.py : bin/temperature.py
-            ./py/where_folder.py : bin/where_folder.py
-            ./py/find_path.py : bin/find_path.py
+            ./py/whatTemper.py : bin/whatTemper.py
+            ./py/singleTemper.py : bin/singleTemper.py
+            # ./py/temperature.py : bin/temperature.py
+            # ./py/where_folder.py : bin/where_folder.py
+            # ./py/find_path.py : bin/find_path.py

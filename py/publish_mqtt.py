@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# publish_mqtt.py
+
 # Test publishing device data via MQTT to relayr cloud.
 
 # This subscribes to a given MQTT topic and publishes messages for this topic,
 # so it receives the same messages previously posted.
 import json
 import time
-from temperature import readTemp
 import paho.mqtt.client as mqtt
+from whatTemper import whatTemper
 
 print("Starting the MQTT publish script")
 
@@ -69,8 +71,8 @@ def main(credentials, publishing_period):
     while True:
         client.loop()
 #       sensor_value = read_temperature()
-        sensor_value = readTemp()
-        print(readTemp())
+        sensor_value = whatTemper()
+        print(whatTemper())
 
         # publish data
         message = {
