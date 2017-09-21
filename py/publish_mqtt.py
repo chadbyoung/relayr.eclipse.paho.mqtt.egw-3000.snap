@@ -85,10 +85,8 @@ def main(credentials, publishing_period):
         humid_value = whatHumid()
 
         # publish data
-        message = {
-            "meaning": "Temperature", "value": temper_value,
-            "meaning": "Humidity", "value": humid_value
-        }
+        message = [{"meaning": "Temperature", "value": temper_value},
+                   {"meaning": "Humidity", "value": humid_value}]
 
         # show what you are sending
         print(temper_value)
