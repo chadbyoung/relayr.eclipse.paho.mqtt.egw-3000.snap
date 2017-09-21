@@ -24,10 +24,10 @@ from whatHumid import whatHumid
 
 # mqtt credentials
 creds = {
-    'clientId': 'Tykwep9k9Rxu/ef8WKaW0+w',
-    'user':     'ca4c1ea7-d93d-471b-bf79-ff1629a5b4fb',
-    'password': '9PevthYFtzqQ',
-    'topic':    '/v1/ca4c1ea7-d93d-471b-bf79-ff1629a5b4fb/',
+    'clientId': 'T+UZhMrQjQNS6P2c1zYbSpg',
+    'user':     'f9466132-b423-40d4-ba3f-6735cd86d2a6',
+    'password': '7P_2ch37D7TY',
+    'topic':    '/v1/f9466132-b423-40d4-ba3f-6735cd86d2a6/',
     'server':   'mqtt.relayr.io',
     'port':     1883
 }
@@ -81,17 +81,19 @@ def main(credentials, publishing_period):
 
     while True:
         client.loop()
-        sensor_value = whatTemper()
         temper_value = whatTemper()
         humid_value = whatHumid()
 
         # publish data
         message = {
-            'meaning': 'temperature',
-            'value': temper_value,
-            'meaning': 'humidity',
-            'value': humid_value
+            "meaning": "Temperature", "value": temper_value,
+            "meaning": "Humidity", "value": humid_value
         }
+
+        # show what you are sending
+        print(temper_value)
+        print(humid_value)
+
         client.publish(credentials['topic'] + 'data', json.dumps(message))
 
         time.sleep(publishing_period / 1000.)
