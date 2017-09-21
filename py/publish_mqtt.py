@@ -3,16 +3,24 @@
 
 # publish_mqtt.py
 
-# Test publishing device data via MQTT to relayr cloud.
+"""
+Test publishing device data via MQTT to relayr cloud.
 
-# This subscribes to a given MQTT topic and publishes messages for this topic,
-# so it receives the same messages previously posted.
+This subscribes to a given MQTT topic and publishes messages
+for this topic, so it receives the same messages previously
+posted.
+
+This code needs the paho-mqtt package to be installed, e.g.
+with "pip install paho-mqtt>=1.1".
+"""
+
 import json
 import time
-import paho.mqtt.client as mqtt
-from whatTemper import whatTemper
 
-print("Starting the MQTT publish script")
+import paho.mqtt.client as mqtt
+
+from whatTemper import whatTemper
+from whatHumid import whatHumid
 
 # mqtt credentials
 creds = {
@@ -24,6 +32,9 @@ creds = {
     'port':     1883
 }
 
+# ATTENTION !!!
+# DO NOT try to set values under 200 ms of the server
+# will kick you out
 publishing_period = 1000
 
 
@@ -70,16 +81,18 @@ def main(credentials, publishing_period):
 
     while True:
         client.loop()
-#       sensor_value = read_temperature()
         sensor_value = whatTemper()
-        print(whatTemper())
+        temper_value = whatTemper()
+        humid_value = whatHumid()
 
         # publish data
         message = {
             'meaning': 'temperature',
-            'value': sensor_value
+            'value': temper_value,
+            'meaning': 'humidity',
+            'value': humid_value
         }
-        client.publish(credentials['topic'] +'data', json.dumps(message))
+        client.publish(credentials['topic'] + 'data', json.dumps(message))
 
         time.sleep(publishing_period / 1000.)
 
