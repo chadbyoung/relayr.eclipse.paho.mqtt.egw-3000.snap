@@ -31,12 +31,12 @@ def whatHumid():
             # DEBUG
             # print("sthumid is", sthumid)
 
-            if str(sthumid) == "lps22hb":
+            if str(sthumid) == "hts221":
 
                 sensorPath = ('/sys/bus/iio/devices/iio:device%s' % i)
 
                 # in_humid_raw = open('/sys/bus/iio/devices/iio:device%s/in_humid_raw' % i, "r")
-                in_humid_raw = open(sensorPath + '/in_humid_raw', "r")
+                in_humid_raw = open(sensorPath + '/in_humidityrelative_raw', "r")
                 flt_raw_input = in_humid_raw.readline()
                 InHumidRaw = float(flt_raw_input)
                 # DEBUG
@@ -44,7 +44,7 @@ def whatHumid():
                 in_humid_raw.close
 
                 # Read the "in_humid_offset" file
-                in_humid_offset = open(sensorPath + '/in_humid_offset', "r")
+                in_humid_offset = open(sensorPath + '/in_humidityrelative_offset', "r")
                 flt_offset_input = in_humid_offset.readline()
                 InHumidOffset = float(flt_offset_input)
                 # DEBUG
@@ -52,7 +52,7 @@ def whatHumid():
                 in_humid_offset.close
 
                 # Read the "in_humid_scale" file
-                in_humid_scale = open(sensorPath + '/in_humid_scale', "r")
+                in_humid_scale = open(sensorPath + '/in_humidityrelative_scale', "r")
                 flt_scale_input = in_humid_scale.readline()
                 InHumidScale = float(flt_scale_input)
                 # DEBUG
