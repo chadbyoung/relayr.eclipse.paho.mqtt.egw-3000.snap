@@ -5,7 +5,7 @@
 from os import path
 
 
-def whatTemper():
+def whatHumid():
     # set the main loop count to 0
     i = 0
 
@@ -51,7 +51,7 @@ def whatTemper():
                 # print("InHumidOffset =", InHumidOffset)
                 in_humid_offset.close
 
-                # Read the "in_temp_scale" file
+                # Read the "in_humid_scale" file
                 in_humid_scale = open(sensorPath + '/in_humid_scale', "r")
                 flt_scale_input = in_humid_scale.readline()
                 InHumidScale = float(flt_scale_input)
@@ -73,7 +73,7 @@ def whatTemper():
                 # Multiply the numbers
                 total2 = phase2(total1, InHumidScale)
 
-                # Format and print the temperature data, should look like 35.51 and
+                # Format and print the humidity data, should look like 85.42 and
                 # is in degrees celcius
                 # print(format(total2, ',.2f'))
                 return(format(total2, ',.2f'))
