@@ -25,3 +25,4 @@ parts:
             ./py/publish_mqtt.py : bin/publish_mqtt.py
             ./py/whatTemper.py : bin/whatTemper.py
             ./py/whatHumid.py : bin/whatHumid.py
+            ./py/whatPress.py : bin/whatPress.py

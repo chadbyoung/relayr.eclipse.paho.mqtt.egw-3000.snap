@@ -29,7 +29,7 @@ def whatPress():
             isfile.close
 
             # DEBUG
-            # print("sttemp is", sttemp)
+            # print("stpress is", stpress)
 
             if str(stpress) == "lps22hb":
 
@@ -57,23 +57,11 @@ def whatPress():
                 def calculate(num1, num2, num3):
                     return num1 * num2 * num3
 
-#                def phase1(num1, num2):
-#                    return num1 + num2
-
-#                def phase2(num1, num2):
-#                    return num1 * num2
-
                 # multiply constant
                 multiply = 10
 
                 # Calculate the pressure
                 total = calculate(InPressRaw, InPressScale, multiply)
-
-                # Get the sum of the numbers
-#                total1 = phase1(InTempRaw, InTempOffset)
-
-                # Multiply the numbers
-#                total2 = phase2(total1, multiply)
 
                 # Format and print the temperature data, should look like 35.51 and
                 # is in degrees celcius

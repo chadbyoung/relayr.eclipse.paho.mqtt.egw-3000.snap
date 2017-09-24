@@ -21,13 +21,14 @@ import paho.mqtt.client as mqtt
 
 from whatTemper import whatTemper
 from whatHumid import whatHumid
+from whatPress import whatPress
 
 # mqtt credentials
 creds = {
-    'clientId': 'T+UZhMrQjQNS6P2c1zYbSpg',
-    'user':     'f9466132-b423-40d4-ba3f-6735cd86d2a6',
-    'password': '7P_2ch37D7TY',
-    'topic':    '/v1/f9466132-b423-40d4-ba3f-6735cd86d2a6/',
+    'clientId': '<clientId>',
+    'user':     '<user>',
+    'password': '<password>',
+    'topic':    '<topic>',
     'server':   'mqtt.relayr.io',
     'port':     1883
 }
@@ -83,14 +84,17 @@ def main(credentials, publishing_period):
         client.loop()
         temper_value = whatTemper()
         humid_value = whatHumid()
+        press_value = whatPress()
 
         # publish data
         message = [{"meaning": "Temperature", "value": temper_value},
-                   {"meaning": "Humidity", "value": humid_value}]
+                   {"meaning": "Humidity", "value": humid_value},
+                   {"meaning": "Pressure", "value": press_value}]
 
         # show what you are sending
-        print(temper_value)
-        print(humid_value)
+        #print(temper_value)
+        #print(humid_value)
+        #print(press_value)
 
         client.publish(credentials['topic'] + 'data', json.dumps(message))
 

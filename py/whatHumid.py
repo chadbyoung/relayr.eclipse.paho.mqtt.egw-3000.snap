@@ -35,12 +35,12 @@ def whatHumid():
 
                 sensorPath = ('/sys/bus/iio/devices/iio:device%s' % i)
 
-                # in_humid_raw = open('/sys/bus/iio/devices/iio:device%s/in_humid_raw' % i, "r")
+                # Read the "in_humid_raw" file
                 in_humid_raw = open(sensorPath + '/in_humidityrelative_raw', "r")
                 flt_raw_input = in_humid_raw.readline()
                 InHumidRaw = float(flt_raw_input)
                 # DEBUG
-                # print("InTempRaw =", InTempRaw)
+                # print("InHumidRaw =", InHumidRaw)
                 in_humid_raw.close
 
                 # Read the "in_humid_offset" file
